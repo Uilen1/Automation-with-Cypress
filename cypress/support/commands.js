@@ -26,6 +26,10 @@
 
 import loc from './locators'
 
+Cypress.Commands.add('validaMensagem', (mensagem)=>{
+    cy.get(loc.MESSAGE).should('contain', mensagem)
+})
+
 Cypress.Commands.add('clickAlert', (locator, message) => {
     cy.get(locator).click()
     cy.on('window:alert', msg => {
@@ -34,7 +38,7 @@ Cypress.Commands.add('clickAlert', (locator, message) => {
 })
 
 Cypress.Commands.add('login', (user, passwd) => {
-    cy.visit('https://barrigareact.wcaquino.me/')
+    cy.visit('https://barrigareact.wcaquino.me')
     cy.get(loc.LOGIN.USER).type(user)
     cy.get(loc.LOGIN.PASSWORD).type(passwd)
     cy.get(loc.LOGIN.BTN_LOGIN).click()
@@ -62,8 +66,8 @@ Cypress.Commands.add('getToken', (user, passwd) => {
         })
 })
 
-Cypress.Commands.add('resetRest', () => {
-    cy.getToken('a@a', 'a').then(token => {
+Cypress.Commands.add('resetRest', (user, passwd) => {
+    cy.getToken(user, passwd).then(token => {
         cy.request({
             method: 'GET',
             url: '/reset',
@@ -72,8 +76,8 @@ Cypress.Commands.add('resetRest', () => {
     })
 })
 
-Cypress.Commands.add('getContaByName', name => {
-    cy.getToken('a@a', 'a').then(token => {
+Cypress.Commands.add('getContaByName', (user,passwd,name) => {
+    cy.getToken(user, passwd).then(token => {
         cy.request({
             method: 'GET',
             url: '/contas',

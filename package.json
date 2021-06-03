@@ -14,5 +14,13 @@
   "dependencies": {
     "cypress": "^3.6.0",
     "cypress-xpath": "^1.4.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uilen1/Automation-with-Cypress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Uilen1/Automation-with-Cypress/issues"
+  },
+  "homepage": "https://github.com/Uilen1/Automation-with-Cypress#readme"
 }
